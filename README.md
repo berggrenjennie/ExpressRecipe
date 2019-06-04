@@ -9,7 +9,6 @@ När vi kommer hem från jobbet och är hungriga vill vi snabbt kunna laga mat t
 Denna app utvecklas för människor som snabbt vill hitta recept och få inspiration för varierad matlagning.  
 
 Man ska också kunna hitta recept att laga på de ingredienser man har hemma i kylskåp och skafferi. 
-Appfunktioner
 
 ### Användare:
 Som användare vill jag komma till en sida som visar inspirerande bilder baserade på kategorier. Jag vill kunna välja om jag vill ha ett recept som är lunch, middag eller dessert etc. 
