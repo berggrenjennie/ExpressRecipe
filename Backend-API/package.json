@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./tests --recursive"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,14 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.5.11"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.1",
+    "should": "^13.2.3",
+    "sinon": "^7.3.2",
+    "sinon-mongoose": "^2.3.0",
+    "supertest": "^4.0.2"
   }
 }

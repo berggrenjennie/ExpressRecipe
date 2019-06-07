@@ -2,10 +2,8 @@
 getUser = (req, res, next) => {
     console.log(req.params._id);
     if(req.params._id) {
-        req.models.User.findById(
-            req.params._id,
-            req.body,
-        ).then((user) => {
+        req.models.User.findById(req.params._id)
+        .then((user) => {
             return res.send(user);
         }).catch((error) => {
             next(error)
