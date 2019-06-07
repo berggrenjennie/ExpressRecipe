@@ -1,4 +1,3 @@
-
 getUser = (req, res, next) => {
     console.log(req.params._id);
     if(req.params._id) {
@@ -18,7 +17,6 @@ getUser = (req, res, next) => {
         })
     }
 }
-
 
 postUser = (req, res, next) => {
   req.models.User.create({
@@ -63,7 +61,6 @@ deleteUser = (req, res, next) => {
     res.sendStatus(204)
   }).catch((error) => next(error))
 }
-
 
 module.exports = {
 postUser,
