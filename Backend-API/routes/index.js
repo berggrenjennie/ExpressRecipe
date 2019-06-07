@@ -3,6 +3,7 @@ const router = express.Router();
 
 const users = require('./users.js');
 const recipes = require('./recipes.js');
+const comments = require('./comments.js')
 
 /* User Router */
 router.get("/users", users.getUser);
@@ -17,5 +18,12 @@ router.get("/recipes/:id", recipes.getRecipeId);
 router.post("/recipes", recipes.postRecipe);
 router.put("/recipes", recipes.putRecipe);
 router.delete("/recipes", recipes.deleteRecipeId);
+
+/*Comment Router*/
+ router.get("/comments", comments.getComment);
+ router.get("/comments/:_id", comments.getComment);
+ router.post("/comments", comments.postComment);
+ router.put("/comments/:commentId", comments.putComment);
+ router.delete("/comments/:commentId", comments.deleteComment);
 
 module.exports = router
