@@ -16,8 +16,8 @@ router.delete("/users/:userId", users.deleteUser);
 router.get("/recipes", recipes.getRecipe);
 router.get("/recipes/:id", recipes.getRecipeId);
 router.post("/recipes", recipes.postRecipe);
-router.put("/recipes", recipes.putRecipe);
-router.delete("/recipes", recipes.deleteRecipeId);
+router.put("/recipes/:recipeId", recipes.putRecipe);
+router.delete("/recipes/:recipeId", recipes.deleteRecipeId);
 
 /*Comment Router*/
  router.get("/comments", comments.getComment);

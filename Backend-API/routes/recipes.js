@@ -32,16 +32,16 @@ postRecipe = (req, res, next) => {
     preparationTime: req.body.preparationTime,
     diet: req.body.diet
   }).then((recipe) => {
-    return res.status(201).send(`${recipe.name} has been added!`)
+    return res.status(201).send(recipe)
   }).catch((error) => {
     next(error)
-  }) 
+  })
 }
 
 // put/update recipe
 putRecipe = (req, res, next) => {
-  req.models.Student.updateOne(
-    { _id: req.params.id },
+  req.models.Recipe.updateOne(
+    { _id: req.params.recipeId },
     {
       category: req.body.category,
       name: req.body.name,
@@ -74,8 +74,8 @@ putRecipe = (req, res, next) => {
 
 // delete recipe
 deleteRecipeId = (req, res, next) => {
-  req.models.Recipe.findByIdAndRemove(req.params.id).then((student) => {
-    return res.status(200).send(`${recipe.name} has been deleted!`)
+  req.models.Recipe.findByIdAndRemove(req.params.recipeId).then((recipe) => {
+    return res.status(200).send(recipe)
   }).catch((error) => {
     next(error)
   })
