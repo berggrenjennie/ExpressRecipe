@@ -110,12 +110,12 @@ describe('User Integration tests', () => {
 	// 		// Given (preconditions)
 	// 		userMock
 	// 		.expects('updateOne')
-	// 		.withArgs("userId":"5cecf112a66bc43a217dfda3",{
+	// 		.withArgs({_id: req.params.userId},{
 	// 			"email": "coolz@gmail.com",
 	// 			"password": "coolz",
 	// 			"permission": "user",
 	// 		},
-	// 		 {" new": "true", "runvalidators": "true", "upsert": "true" }
+	// 		 {" new": "true","upsert": "true", "runvalidators": "true"},
 	// 	)
 	// 		.chain('exec')
 	// 		.resolves(expected);

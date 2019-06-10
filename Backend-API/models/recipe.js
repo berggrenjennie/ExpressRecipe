@@ -6,20 +6,20 @@ const recipeSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  name: { 
+  name: {
     type: String,
     unique: true,
     required: true
   },
-  preamble: { 
+  preamble: {
     type: String,
     required: true
   },
-  ingredients: { 
+  ingredients: {
     type: String,
     required: true
   },
-  preparation: { 
+  preparation: {
     type: String,
     required: true
   },
@@ -27,18 +27,18 @@ const recipeSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  videoPath: { 
+  videoPath: {
     type: String
   },
   portions: {
-    type: Number 
+    type: Number
   },
   preparationTime: {
-    type: Number
+    type: String
   },
   diet: {
     type: String
-  }  
+  }
 });
 
 const Recipe = mongoose.model('Recipe', recipeSchema);
