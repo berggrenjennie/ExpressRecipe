@@ -38,7 +38,7 @@ putUser = (req, res, next) => {
     {
       new: true,
       upsert: true,
-      runvalidators: true,
+      runvalidators: true
     }).then((status) => {
       console.log("status: ", status)
       if (status.upserted)
