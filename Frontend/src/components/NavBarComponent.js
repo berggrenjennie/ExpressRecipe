@@ -25,7 +25,7 @@ class NavBarComponent extends Component {
   render() {
     const {
       userPermission
-    }=this.state
+    } = this.state
     return (
       <Navbar collapseOnSelect expand="lg">
         <Navbar.Brand>ExpressRecept</Navbar.Brand>

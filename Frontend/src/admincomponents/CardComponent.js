@@ -10,6 +10,9 @@ import React, { Component } from 'react';
 import { Button, Card} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
+//CSS imports
+import '../styles/Admin.css';
+
 class CardComponent extends Component {
   
   static propTypes = {
@@ -34,12 +37,6 @@ class CardComponent extends Component {
         <div>
           {this.props.children}
         </div>
-        <div id="showHide">
-          {this.state.showInfo?this.props.info:null}
-        </div>
-        {this.props.info &&
-          <Button className="cardBtn" variant="primary" onClick={this.toggleInfo}>Show info</Button>
-        }
       </Card>
     );
   }

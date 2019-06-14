@@ -7,7 +7,6 @@ import LoginComponent from './components/LoginComponent';
 import NavBarComponent from './components/NavBarComponent';
 import FooterComponent from './components/FooterComponent';
 import RecipeComponent from './components/RecipeComponent';
-import SearchComponent from './components/SearchComponent';
 
 import DashBoardScreen from './screens/DashBoardScreen';
 import UserScreen from './screens/UserScreen';
@@ -21,12 +20,25 @@ import './App.css';
 
 class App extends Component {
   /*We render the Router and NavBarComponent.*/
+  constructor(props) {
+    super(props);
+    this.state = {
+      userPermission:"user"
+    }
+  }
+  componentDidMount() {
+    this.setState({
+      userPermission: localStorage.getItem('user')
+    });
+  }
   render() {
+    const {
+      userPermission
+    } = this.state
     return (
       <div>
         <Router>
-          <NavBarComponent/>
-          <SearchComponent/>
+          <NavBarComponent/> 
           <Route path="/" exact component={CategoryScreen} />
           {/*<Route path="/" exact component={LoginComponent} />*/}
           <Route path="/adminpage" component={AdminScreen} />
