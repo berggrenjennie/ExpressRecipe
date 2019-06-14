@@ -1,0 +1,36 @@
+.index-search-bar {
+  text-align: center;
+  font-family: 'Playfair Display', serif;   
+  margin: 0 auto;
+  color: #A4332F;
+  max-width: 500px;
+  z-index: -1;
+  margin-bottom: 30px; 
+}
+h1 {
+  margin-bottom: 15px;
+}
+.index-search-bar form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+}
+.index-search-bar input {
+  font-size: 17px;
+  color: #A4332F;
+  background-color: white;; 
+  width: 100%;
+  border: none;
+  padding: 6px;
+  margin: 0; 
+}
+.index-search-bar button {
+  border: none;
+  background: none;
+  color: #A4332F;
+  cursor: pointer;
+  font-size: 17px;
+  margin: 0;
+  padding: 6px 10px; 
+}
