@@ -20,7 +20,15 @@
     margin-right:30px;
 
 }
-.navbar-light .navbar-nav .nav-link:hover {
+.navbar-light .navbar-nav a {
+    color: rgb(255, 236, 202);
+    font-size: 20px;
+    margin-top: 4px;
+    margin-left:3px;
+    margin-right:30px;
+
+}
+.navbar-light .navbar-nav a:hover {
     color: #A4332F;
 }
 .navbar .navbar-brand:hover { 
@@ -30,4 +38,7 @@
     margin-top: 10px;
     background-color: rgb(255, 236, 202);
     border:none;   
+}
+.fa-user {
+    font-size: 40px;
 }

@@ -1,14 +1,16 @@
 .recipes {
-    padding: 5px;
     border: 1px solid rgb(182, 155, 152);
+    background-color: aqua;
 }
 .imgCard {
     border-radius: 0px;
+    width: 100%;
+    height: auto;
 }
 .recipes {
-    display:grid;
+    display: grid;
     grid-template: auto / 1fr 3fr;
-    grid-template-areas: "img title" "img content"; 
+    grid-template-areas: "img title content"; 
     padding: 1.5em;
     grid-column-gap: 1.5em; /*this removes row gap*/
 }

@@ -5,14 +5,14 @@ import React from 'react';
 import axios from 'axios';
 
 
-const loginKey = 'username';
+const loginKey = 'user';
 const userKey = 'user';
 
 const withStorage = WrappedComponent => {
   class HOC extends React.Component {
 
     // Checks if user exists in localStorage.
-    checkStatus() {
+    checkStatus(loginKey) {
       localStorage.getItem(loginKey);
     };
 
@@ -27,8 +27,8 @@ const withStorage = WrappedComponent => {
     };
 
     // Sets localStorage to key = user, and data = uservalue in UserComponent
-    login = (username) => {
-      this.addData(loginKey, username);
+    login = (userId) => {
+      this.addData(loginKey, userId);
     };
 
     // Adds our user and stingify's it. Used in UserComponent for Registration.
@@ -42,14 +42,14 @@ const withStorage = WrappedComponent => {
       localStorage.removeItem(userKey);
     };
 
-    // Gets users from Softhouse API.
+    // Gets users from  API.
     getUsers() {
-      return axios.get('http://api.softhouse.rocks/users/');
+      return axios.get('http://localhost:2000/users/');
     }
 
-    // Gets user's ID from Softhouse API.
+    // Gets user's ID from  API.
     getUserId(id) {
-      return axios.get('http://api.softhouse.rocks/users/' + id);
+      return axios.get('http://localhost:2000/users/' + id);
     }
 
     render() {

@@ -16,6 +16,11 @@ footer .kontakt h4 {
   margin-top: 10px;
   font-size: 18px;
 }
+footer .copy h4 {
+  font-family: 'Playfair Display', serif; 
+  margin-top: 50px;
+  font-weight: bold;
+}
 footer .kontakt p {
   color: rgb(255, 236, 202);
   font-size: 15px; 
@@ -32,9 +37,11 @@ footer .social-media i:nth-child(-n+2) {
 }  
 @media (min-width: 48em) {
   footer .social-media h4,
-  footer .copy h4,
   footer .kontakt h4 {
     font-size: 22px; 
+  }
+  footer .copy h4 {
+    font-size: 25px;
   }
   footer .social-media {
     margin-left: 10%; }

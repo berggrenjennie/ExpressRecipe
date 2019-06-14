@@ -1,31 +1,30 @@
-/* AdminComponent is a class component which has information about recipe in the constructor:
-
+/* AdminComponent is a class component which has the information about recipe in the constructor:
 the component has also five methods:
-1-componentDidMount:is a lifecycle method which called after the function fetchrecipes from HOCS to display all
+1-componentDidMount:is a lifecycle method which called after the function getRecipes from HOCS to display all
 the recipes in database.
 2-handleInputChange: To control and change the value of the input field in the form by using setState.
 3-addrecipeName: To add the informations of the recipe to the database.
 4-removrecipeName: To remove the informations of the recipe from the database.
 */
-
-// Core functionality from React & Bootstrap
 import React, { Component , Fragment} from 'react';
-import { Container, Row, Col, Button, Form, Table} from 'react-bootstrap';
-import PropTypes from 'prop-types';
-
-// Existing component imports
 import CardComponent from '../admincomponents/CardComponent';
-import withHTTPRequests from './../HOCS/withHTTPRequests';    //withHTTPRequests is a Higher-order component which takes DashBoardComponent and returns a new component
+import {Container,Row,Col,Button,Form,Table} from 'react-bootstrap';
+
+/* withHTTPRequests is a Higher-order component which takes DashBoardComponent and returns a
+new component*/
+import withHTTPRequests from './../HOCS/withHTTPRequests';
+import axios from 'axios';
+import PropTypes from 'prop-types';
 
 class RecipesComponent extends Component {
 
   static propTypes = {
-    recipeList: PropTypes.array,    // throws a warning if recipeList is not array
-    fetchrecipes: PropTypes.func.isRequired   //the function fetchrecipes is required
-  }
+      getRecipes: PropTypes.func.isRequired,// The function getRecipes is required .
+      recipeList: PropTypes.array.isRequired
+    }
 
   constructor(props) {
-    super(props);
+  super(props);
     this.state ={
       category: '',
       name: '',
@@ -34,26 +33,29 @@ class RecipesComponent extends Component {
       preparation:'',
       imagePath:'',
       videoPath:'',
-      portions:0,
+      portions:4,
       preparationTime:'',
       diet:''
     };
   }
 
+  /*A method that calls the function (getRecipes()) which is props received from withHTTPRequests component. */
   componentDidMount(){
-    this.props.fetchrecipes();    //calls the function (fetchrecipes()) which is props received from the withHTTPRequests component
+    this.props.getRecipes();
   }
 
-  handleInputChange = name => event => {    //handles all the input field data changes, where 'name' is field changed and event is the incoming data change to that field. This function then sets the appropriate state
+  /*One function to handle all the input field data changes, where 'name' is field changed and event is the incoming data change to that field. This function then sets the appropriate state.*/
+  handleInputChange = name => event => {
     const state = {};
     state[name] = event.target.value;
     this.setState(state);
   };
 
-  addrecipeName = event => {    //adds an object (newrecipe) to the API through post
+  /*A method which adds an object (newrecipe) to API, by using Post method.*/
+  addRecipe= event => {
     event.preventDefault();
     let url = 'http://localhost:2000/recipes';
-    const newrecipe = {
+    const newRecipe = {
       category:this.state.category,
       name:this.state.name,
       preamble:this.state.preamble,
@@ -65,16 +67,9 @@ class RecipesComponent extends Component {
       preparationTime:this.state.preparationTime,
       diet:this.state.diet
     }
-
-    fetch(url, {
-      method: 'POST',
-      body: JSON.stringify(newrecipe),
-      headers:{
-        'Content-Type': 'application/json'
-      }
-    }).then(res => res.json())
+    axios.post(url,newRecipe)
     .then(response => {
-      this.props.fetchrecipes();
+      this.props.getRecipes();
       this.setState({
         category: '',
         name: '',
@@ -83,7 +78,7 @@ class RecipesComponent extends Component {
         preparation:'',
         imagePath:'',
         videoPath:'',
-        portions:0,
+        portions:4,
         preparationTime:'',
         diet:''
       })
@@ -91,20 +86,18 @@ class RecipesComponent extends Component {
     .catch(error => console.error('Error:', error));
   }
 
-  removrecipeName(id) {   //deletes a recipe from the API through delete
-    console.log("id", id);
-    fetch('http://localhost:2000/recipes/' + id, {
-      method: 'delete'
-    })
+  /*A method which delete a special recipe from API, by using Delete method.*/
+  removeRecipe(id) {
+    axios.delete ('http://localhost:2000/recipes/' + id)
     .then(response => {
-      // console.log('Success:', JSON.stringify(response));
-      this.props.fetchrecipes();
+      this.props.getRecipes();
     })
     .catch(error => console.error('Error:', error));
   }
 
-  render() {    //render two card components
-    const { 
+  /*We render two card's components*/
+  render(){
+    const {
       category,
       name,
       preamble,
@@ -128,89 +121,89 @@ class RecipesComponent extends Component {
                 <Table striped bordered hover variant="dark" responsive="sm">
                   <thead>
                     <tr>
-                      <th>#</th>
-                      <th>Recept namn</th>
-                      <th>Receptet kategori</th>
-                      <th>Ingress</th>
-                      <th>Ta bort</th>
+                    <th>#</th>
+                    <th>Recept namn</th>
+                    <th>Receptet kategori</th>
+                    <th>Ingress</th>
+                    <th>Ta bort</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {/*render the newrecipeList array by using map and recipe.id as a key.*/}
+                  {this.props.recipeList.map((recipe, index) =>
+                    <tr key={recipe._id} >
+                      <td>{index+1}</td>
+                      <td>{recipe.name}</td>
+                      <td>{recipe.category}</td>
+                      <td>{recipe.preamble}</td>
+                      <td><Button variant="danger" className="removeBtn" onClick={(e) => this.removrecipeName(recipe._id, e)} >x</Button></td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {/*render the newrecipeList array by using map and recipe.id as a key.*/}
-                    {this.props.recipeList.map((recipe, index) =>
-                      <tr key={recipe._id} >
-                        <td>{index+1}</td>
-                        <td>{recipe.name}</td>
-                        <td>{recipe.category}</td>
-                        <td>{recipe.preamble}</td>
-                        <td><Button variant="danger" className="removeBtn" onClick={(e) => this.removrecipeName(recipe._id, e)} >x</Button></td>
-                      </tr>
-                    )}
-                  </tbody>
-                </Table>
-              </div>
-            </Col>
-            <Col lg="6">
-              <div>
-                <CardComponent>
-                  <Form onSubmit={this.addrecipeName}>
-                    <Form.Control as="select" className="inputForm" size="lg" value={category}  onChange={this.handleInputChange('category')} >
-                      <option>Välj kategori</option>
-                      <option>Fisk</option>
-                      <option>Kött</option>
-                      <option>Kyckling</option>
-                      <option>Vegetariskt</option>
-                      <option>Dessert</option>
-                      <option>Dryck</option>
-                    </Form.Control>
-                    <br/>
-                    <Form.Label>Recept Namn:</Form.Label>
-                    <Form.Control className="inputForm" size="lg" type="text" 
-                      value={name}  onChange={this.handleInputChange('name')} />
-                    <br/>
-                    <Form.Label>Ingress:</Form.Label>
-                    <Form.Control as="textarea" rows="5" className="inputForm" size="lg" type="text"
-                      value={preamble}  onChange={this.handleInputChange('preamble')} />
-                    <br/>
-                    <Form.Label>Ingredienser:</Form.Label>
-                    <Form.Control as="textarea" rows="5" className="inputForm" size="lg" type="text"
-                      value={ingredients}  onChange={this.handleInputChange('ingredients')} />
-                    <br/>
-                    <Form.Label>Förberedelse:</Form.Label>
-                    <Form.Control as="textarea" rows="10" className="inputForm" size="lg" type="text"
-                      value={preparation}  onChange={this.handleInputChange('preparation')} />
-                    <br/>
-                    <Form.Label>Bildnamn:</Form.Label>
-                    <Form.Control className="inputForm" size="lg" type="text"
-                      value={imagePath}  onChange={this.handleInputChange('imagePath')} />
-                    <br/>
-                    <Form.Label>Videolänk:</Form.Label>
-                    <Form.Control className="inputForm" size="lg" type="text"
-                      value={videoPath}  onChange={this.handleInputChange('videoPath')} />
-                    <br/>
-                    <Form.Label>Portioner:</Form.Label>
-                    <Form.Control className="inputForm" size="lg" type="Number"
-                      value={portions}  onChange={this.handleInputChange('portions')} />
-                    <br/>
-                    <Form.Label>Förberedelsetid:</Form.Label>
-                    <Form.Control className="inputForm" size="lg" type="text"
-                      value={preparationTime}  onChange={this.handleInputChange('preparationTime')} />
-                    <br/>
-                    <Form.Label>Kost:</Form.Label>
-                    <Form.Control className="inputForm" size="lg" type="text"
-                      value={diet}  onChange={this.handleInputChange('diet')} />
-                    <br/>
-                    {/*call addrecipeName() when the submit button is clicked*/}
-                    <Button variant="success" type="submit">Add recipe to database</Button>
-                  </Form>
+                  )}
+                </tbody>
+              </Table>
+            </div>
+          </Col>
+          <Col lg="6">
+            <div>
+              <CardComponent>
+                <Form onSubmit={this.addrecipeName}>
+                  <Form.Control as="select" className="inputForm" size="lg" value={category}  onChange={this.handleInputChange('category')} >
+                    <option>Välj kategori</option>
+                    <option>Fisk</option>
+                    <option>Kött</option>
+                    <option>Kyckling</option>
+                    <option>Vegetariskt</option>
+                    <option>Dessert</option>
+                    <option>Dryck</option>
+                  </Form.Control>
                   <br/>
-                </CardComponent>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </Fragment>
-    );
-  }
+                  <Form.Label>Recept Namn:</Form.Label>
+                  <Form.Control className="inputForm" size="lg" type="text" 
+                    value={name}  onChange={this.handleInputChange('name')} />
+                  <br/>
+                  <Form.Label>Ingress:</Form.Label>
+                  <Form.Control as="textarea" rows="5" className="inputForm" size="lg" type="text"
+                    value={preamble}  onChange={this.handleInputChange('preamble')} />
+                  <br/>
+                  <Form.Label>Ingredienser:</Form.Label>
+                  <Form.Control as="textarea" rows="5" className="inputForm" size="lg" type="text"
+                    value={ingredients}  onChange={this.handleInputChange('ingredients')} />
+                  <br/>
+                  <Form.Label>Förberedelse:</Form.Label>
+                  <Form.Control as="textarea" rows="10" className="inputForm" size="lg" type="text"
+                    value={preparation}  onChange={this.handleInputChange('preparation')} />
+                  <br/>
+                  <Form.Label>Bildnamn:</Form.Label>
+                  <Form.Control className="inputForm" size="lg" type="text"
+                    value={imagePath}  onChange={this.handleInputChange('imagePath')} />
+                  <br/>
+                  <Form.Label>Videolänk:</Form.Label>
+                  <Form.Control className="inputForm" size="lg" type="text"
+                    value={videoPath}  onChange={this.handleInputChange('videoPath')} />
+                  <br/>
+                  <Form.Label>Portioner:</Form.Label>
+                  <Form.Control className="inputForm" size="lg" type="Number"
+                    value={portions}  onChange={this.handleInputChange('portions')} />
+                  <br/>
+                  <Form.Label>Förberedelsetid:</Form.Label>
+                  <Form.Control className="inputForm" size="lg" type="text"
+                    value={preparationTime}  onChange={this.handleInputChange('preparationTime')} />
+                  <br/>
+                  <Form.Label>Kost:</Form.Label>
+                  <Form.Control className="inputForm" size="lg" type="text"
+                    value={diet}  onChange={this.handleInputChange('diet')} />
+                  <br/>
+                  {/*call addrecipeName() when the submit button is clicked*/}
+                  <Button variant="success" type="submit">Add recipe to database</Button>
+                </Form>
+                <br/>
+              </CardComponent>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </Fragment>
+  );
+}
 }
 export default withHTTPRequests(RecipesComponent);

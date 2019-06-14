@@ -5,29 +5,32 @@ fetchrecipes which is a method used to fetch the recipes data from API.
 */
 
 import React, { Component } from 'react';
+import axios from 'axios';
 export default function withHTTPRequests(WrappedComponent, selectData) {
 
     return class extends Component {
       constructor(props){
         super(props);
-
         this.state = {
             recipeList:[],
         }
       }
 
-      fetchrecipes = () => {
-        fetch('http://localhost:2000/recipes')
-        .then((response)=> response.json().then((response)=>{
-          this.setState({recipeList:response});
-        }));
+
+      getRecipes = () => {
+        axios.get('http://localhost:2000/recipes')
+          .then(response =>
+            this.setState({
+              recipeList: response.data
+           })
+        );
       }
 
       render() {
         /*we pass through WrappedComponent a method fetchrecipes and recipeList as props*/
         return (
           <WrappedComponent
-            fetchrecipes={this.fetchrecipes}
+            getRecipes={this.getRecipes}
             recipeList={this.state.recipeList}
             {...this.props}
           />

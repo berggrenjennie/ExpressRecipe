@@ -10,9 +10,6 @@ import categoryList from '../data/categoryList';
 import '../styles/Category.css'
 
 export default class CategoryScreen extends Component {
-  componentDidMount() {
-    //console.log(categoryList)
-  }
   render() {
     return (
       <div className="main">

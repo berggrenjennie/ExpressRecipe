@@ -1,7 +1,7 @@
 const categoryList = [
     {
         name: "Fisk",
-        image: "https://files.ellematovin.se/uploads/gryta-thailandsk-fiskgryta-700x700.jpg",
+        image: "https://www.seabear.com/media/catalog/product/cache/1/image/700x700/e9c3970ab036de70892d86c6d221abfe/s/o/sockeye-wild-alaskan-salmon-dinner-fillet-2-16036-2016-a_1.jpg",
         hrColor: "5px solid blue",
         color: "blue",
         number: 3
