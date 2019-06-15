@@ -1,0 +1,121 @@
+.information-recept {
+    padding: 50px;
+    font-family: 'Playfair Display', serif;
+}
+.specificRecipeImg {
+    object-fit: cover;
+    width: 100%;
+    height: 430px;
+    margin: 0 auto;
+    margin-top: -30px;  
+}
+.specRecipeName {
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #a4332f;
+}
+.stars i {
+    margin-right: 5px;
+    color: rgb(240, 225, 13);
+    font-size: 20px;
+}
+.stars i:nth-child(5) {
+    color: rgb(226, 226, 226);
+}
+.ingress {
+    margin-top: 20px;
+    font-size: 20px;
+    font-style: italic;
+}
+.ingredienser {
+    margin-top: -15px;
+}
+.ingredienser p {
+    border-bottom: 1px solid black;
+}
+.spara {
+    background-color:#BF443D;
+    border: 0px;
+    padding: 6px;
+    border-radius: 30px;
+    font-size: 18px;
+    width: 25%;
+}
+.spara:hover {
+    background-color: #a4332f;
+}
+.do-like {
+    margin-top: -15px;
+    grid-column: 3/4;
+}
+.to-do {
+    margin-left: 50px;
+    display: grid;
+    grid-template-columns: 27% 23% 23% 27%;
+    font-family: 'Playfair Display', serif;
+}
+@media (max-width: 45em) {
+    .do-like {
+      grid-column: auto; 
+    } 
+}
+@media (min-width: 48em) {
+    .to-do {
+      grid-template-columns: 40% 5% 50% 5%; 
+      margin-bottom: 20px;
+    }
+    .do-like {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+    .ingredienser p {
+        font-size: 15px;
+    }
+    select {
+        width: auto;
+        padding: 9px 9px;
+        margin-bottom: 5px;
+        margin-left: 13%;
+        border: none;
+        border-radius: 2px;
+        font-family: "Merriweather", serif;
+        color: #555050;
+        font-size: 20px; 
+    }
+    .spara {
+    width: 15%;
+    }
+}
+@media (max-width: 45em) {
+    .to-do {
+      grid-template-columns: 1fr; 
+    } 
+    .h1dolike {
+        margin-top: 40px;
+    }
+    .ingredienser p {
+        border-bottom: 1px solid black;
+        width: 50%;
+        font-size: 15px;
+    }
+    select {
+        width: auto;
+        padding: 9px 9px;
+        margin-bottom: 5px;
+        margin-left: 13%;
+        border: none;
+        border-radius: 2px;
+        font-family: "Merriweather", serif;
+        color: #555050;
+        font-size: 20px; 
+    }
+    .receptfor .opt {
+        font-family: "Merriweather", serif;
+        font-size: 20px; 
+    }
+    .do-like {
+        font-size: 17px;
+        margin-bottom: 20px;
+    }
+}

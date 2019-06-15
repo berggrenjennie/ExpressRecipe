@@ -7,6 +7,7 @@ import LoginComponent from './components/LoginComponent';
 import NavBarComponent from './components/NavBarComponent';
 import FooterComponent from './components/FooterComponent';
 import RecipeComponent from './components/RecipeComponent';
+import AboutComponent from './components/AboutComponent';
 
 import DashBoardScreen from './screens/DashBoardScreen';
 import UserScreen from './screens/UserScreen';
@@ -17,6 +18,7 @@ import SuperUserScreen from './screens/SuperUserScreen';
 
 //CSS imports
 import './App.css';
+import DashBoardComponent from './components/DashBoardComponent';
 
 class App extends Component {
   /*We render the Router and NavBarComponent.*/
@@ -39,7 +41,9 @@ class App extends Component {
       <div>
         <Router>
           <NavBarComponent/> 
+          <DashBoardScreen/>
           <Route path="/" exact component={CategoryScreen} />
+          <Route path="/about" component={AboutComponent} />
           {/*<Route path="/" exact component={LoginComponent} />*/}
           <Route path="/adminpage" component={AdminScreen} />
           <Route path="/superuserpage" component={SuperUserScreen} />

@@ -16,13 +16,10 @@ export default function withHTTPRequests(WrappedComponent, selectData) {
         }
       }
 
-
       getRecipes = () => {
         axios.get('http://localhost:2000/recipes')
           .then(response =>
-            this.setState({
-              recipeList: response.data
-           })
+            this.setState({ recipeList: response.data })
         );
       }
 

@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 
 // CSS imports
-import '../styles/Category.css'
+import '../styles/Category.css';
 import categoryList from '../data/categoryList';
 
 class CardComponent extends Component {
