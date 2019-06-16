@@ -7,7 +7,7 @@
     width: 100%;
     height: 430px;
     margin: 0 auto;
-    margin-top: -30px;  
+    margin-top: -30px;
 }
 .specRecipeName {
     margin-bottom: 20px;
@@ -33,6 +33,7 @@
 }
 .ingredienser p {
     border-bottom: 1px solid black;
+
 }
 .spara {
     background-color:#BF443D;
@@ -57,12 +58,12 @@
 }
 @media (max-width: 45em) {
     .do-like {
-      grid-column: auto; 
-    } 
+      grid-column: auto;
+    }
 }
 @media (min-width: 48em) {
     .to-do {
-      grid-template-columns: 40% 5% 50% 5%; 
+      grid-template-columns: 40% 5% 50% 5%;
       margin-bottom: 20px;
     }
     .do-like {
@@ -81,7 +82,7 @@
         border-radius: 2px;
         font-family: "Merriweather", serif;
         color: #555050;
-        font-size: 20px; 
+        font-size: 20px;
     }
     .spara {
     width: 15%;
@@ -89,8 +90,8 @@
 }
 @media (max-width: 45em) {
     .to-do {
-      grid-template-columns: 1fr; 
-    } 
+      grid-template-columns: 1fr;
+    }
     .h1dolike {
         margin-top: 40px;
     }
@@ -108,11 +109,11 @@
         border-radius: 2px;
         font-family: "Merriweather", serif;
         color: #555050;
-        font-size: 20px; 
+        font-size: 20px;
     }
     .receptfor .opt {
         font-family: "Merriweather", serif;
-        font-size: 20px; 
+        font-size: 20px;
     }
     .do-like {
         font-size: 17px;

@@ -1,6 +1,6 @@
 .recipes {
     border: 1px solid rgb(182, 155, 152);
-    background-color: aqua;
+  /*  background-color: aqua;*/
 }
 .imgCard {
     border-radius: 0px;
@@ -10,7 +10,7 @@
 .recipes {
     display: grid;
     grid-template: auto / 1fr 3fr;
-    grid-template-areas: "img title content"; 
+    grid-template-areas: "img title content";
     padding: 1.5em;
     grid-column-gap: 1.5em; /*this removes row gap*/
 }
@@ -49,4 +49,47 @@
     margin-top: 5px;
     margin-bottom: 5px;
     line-height: 20px;
+  }
+/**********************************************************/
+.recipeListCard {
+  display: block;
+  max-width: 80em;
+  margin-bottom: 2em;
+  margin-left: 10em;
+  margin-right: 10em;
+  background-color: white;
+  color: black;
+  border: 1px solid rgb(182, 155, 152);
+  border-radius: 10px;
+  font-size: 16px;
+}
+  .imgCardList { grid-area: a; }
+  .titleCardList { grid-area: b; }
+  .bodyCardList { grid-area: c; }
+
+  .grid-container {
+    display: grid;
+    grid-template-areas:
+      'a b b b'
+      'c c c c';
+    grid-gap: 10px;
+    padding: 10px;
+  }
+
+  .grid-container > div {
+    text-align: left;
+    padding: 20px 0;
+    flex-direction: column;
+  }
+  .readMore{
+    border: 1px solid #a4332f;
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    float: right;
+    margin-right: 20px;
+    /*background: red; */
   }

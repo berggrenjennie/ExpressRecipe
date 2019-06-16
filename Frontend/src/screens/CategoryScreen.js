@@ -19,7 +19,7 @@ export default class CategoryScreen extends Component {
         {categoryList.map((category, index) => {
           return (
             <div>
-              <Link to="/recipeList" key={0} className="link" style={{textDecoration: 'none'}}><CardComponent category={category}/></Link>
+              <Link to={"/recipeList/"+category.name}  className="link" style={{textDecoration: 'none'}}><CardComponent key={index} category={category}/></Link>
             </div>
           )
         })}
