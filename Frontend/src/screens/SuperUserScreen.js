@@ -7,9 +7,7 @@ import RecipesComponent from '../admincomponents/RecipesComponent'
 class SuperUserScreen extends Component {
   render() {
       return (
-        <div>
-          SuperUserScreen
-        </div>
+          <RecipesComponent permission="superuser"/>
       );
   }
 }

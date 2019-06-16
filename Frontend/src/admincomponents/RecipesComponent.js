@@ -123,8 +123,8 @@ class RecipesComponent extends Component {
          } = this.state;
 
     return (
-      <Fragment className="table">
-        <Container>
+      <Fragment>
+        <Container className="table">
           <Row>
             <Col  lg="6">
               <div >
@@ -137,7 +137,9 @@ class RecipesComponent extends Component {
                         <th>Namn</th>
                         <th>Kategori</th>
                         <th>Ingress</th>
+                        {this.props.permission==="admin" ?
                         <th>Ta bort</th>
+                        :null}
                       </tr>
                     </thead>
                     <tbody>
@@ -149,7 +151,9 @@ class RecipesComponent extends Component {
                         <td>{recipe.name}</td>
                         <td>{recipe.category}</td>
                         <td>{recipe.preamble}</td>
+                        {this.props.permission==="admin"?
                         <td><Button variant="danger" className="removeBtn" onClick={(e) => this.removeRecipe(recipe._id, e)} >x</Button></td>
+                        :null}
                       </tr>
                     )}
                     </tbody>

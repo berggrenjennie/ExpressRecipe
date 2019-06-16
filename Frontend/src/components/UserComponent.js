@@ -1,18 +1,12 @@
-/*LoginScreen IS A class Component which has a state :
-a value that respects the value of the input field in the form.
-And two methods:
-1-handleChange: To control and change the value of the input field in the form by using setState.
-2-Login: To set the value of the input field in localStorage, and navigates to the dashboard using History.
-*/
-
 import React, { Component,Fragment } from 'react';
 import {Button,Form} from 'react-bootstrap';
 import CardComponent from '../components/CardComponent';
 import withStorage from './../HOCS/withStorage';
 import axios from 'axios';
 import PropTypes from "prop-types";
+import '../styles/login.css';
 
-class LoginComponent extends Component {
+class UserComponent extends Component {
   static propTypes = {
     history: PropTypes.object,
     match: PropTypes.object,
@@ -70,7 +64,7 @@ Login = event => {
     return;
   }
   this.props.login(user.permission);
-  this.props.history.push('/dashboard');
+  this.props.history.push('/home');
 }
 
   showRegisterForm = (e) => {
@@ -100,7 +94,7 @@ Login = event => {
       .post('http://localhost:2000/users/', newUser, axiosConfig)
       .then(response => {
         this.props.addUser(response.data._id);
-        this.props.history.push('/dashboard');
+        this.props.history.push('/home');
       }).catch(error => {
         if (error.response.data.code === 11000) {
           this.setState({ caughtError: true });
@@ -121,35 +115,50 @@ Login = event => {
 
       return (
         <Fragment>
-        {showLoginForm?
-        <Form onSubmit={this.Login}>
-            <h1>Login</h1>
-            <Form.Control className="inputForm" size="lg" type="Email" placeholder="Email" value={emailLogin}   onChange={this.handleInputChange('emailLogin')} />
-            <br />
-            <Form.Control className="inputForm" size="lg" type="password" placeholder="Password" value={passwordLogin}   onChange={this.handleInputChange('passwordLogin')} />
-            <br />
-            {error ? <p>Email and password don't match Please try agin or register.</p>:null}
-            <br />
-            {/*We call Login method when we click the submit button in the form .*/}
-            <Button className="loginBtn" variant="success" type="submit">Login</Button><Button className="loginBtn" variant="primary" onClick={this.showRegisterForm} >Register</Button>
-          </Form>
+          <div className="header">
+          </div>
+          <input type="checkbox" className="openSidebarMenu" id="openSidebarMenu"/>
+          <label htmlFor="openSidebarMenu" className="sidebarIconToggle">
+            <div className="spinner diagonal part-1"></div>
+            <div className="spinner horizontal"></div>
+            <div className="spinner diagonal part-2"></div>
+          </label>
+          <div id="sidebarMenu">
+            <ul className="sidebarMenuInner">
+              <li>
+              <Fragment>
+              {showLoginForm?
+              <Form onSubmit={this.Login}>
+                  <h1>Login</h1>
+                  <Form.Control className="inputForm" size="lg" type="Email" placeholder="Email" value={emailLogin}   onChange={this.handleInputChange('emailLogin')} />
+                  <br />
+                  <Form.Control className="inputForm" size="lg" type="password" placeholder="Password" value={passwordLogin}   onChange={this.handleInputChange('passwordLogin')} />
+                  <br />
+                  {error ? <p>Email and password don't match Please try agin or register.</p>:null}
+                  <br />
+                  {/*We call Login method when we click the submit button in the form .*/}
+                  <Button className="loginUserBtn" variant="success" type="submit">Login</Button><Button className="formBtn" variant="primary" onClick={this.showRegisterForm} >Register</Button>
+                </Form>
 
-          :null}
-          {showRegisterForm?
-          <Form onSubmit={this.Register}>
-              <h1>Register</h1>
-              <Form.Control className="inputForm" size="lg" type="Email" placeholder="Email" value={email}   onChange={this.handleInputChange('email')} />
-              <br />
-              <Form.Control className="inputForm" size="lg" type="password" placeholder="Password" value={password}   onChange={this.handleInputChange('password')} />
-              <br />
-              {/*We call Login method when we click the submit button in the form .*/}
-              <Button className="loginBtn" variant="success" type="submit">Register</Button>
-            </Form>
-            :null}
-          </Fragment>
+                :null}
+                {showRegisterForm?
+                <Form onSubmit={this.Register}>
+                    <h1>Register</h1>
+                    <Form.Control className="inputForm" size="lg" type="Email" placeholder="Email" value={email}   onChange={this.handleInputChange('email')} />
+                    <br />
+                    <Form.Control className="inputForm" size="lg" type="password" placeholder="Password" value={password}   onChange={this.handleInputChange('password')} />
+                    <br />
+                    {/*We call Login method when we click the submit button in the form .*/}
+                    <Button className="formBtn" variant="success" type="submit">Register</Button>
+                  </Form>
+                  :null}
+                </Fragment>
+              </li>
+            </ul>
+          </div>
+        </Fragment>
       );
   }
 }
 
-
-export default withStorage(LoginComponent);
+export default withStorage(UserComponent);

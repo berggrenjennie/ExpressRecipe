@@ -2,7 +2,7 @@
 getRecipe = (req, res, next) => {
   var query;
   if(req.query.category) {
-    query = req.models.Recipe.findOne({ category: req.query.category })
+    query = req.models.Recipe.find({ category: req.query.category })
   } else {
     query = req.models.Recipe.find()
   }

@@ -7,7 +7,7 @@ import RecipesComponent from '../admincomponents/RecipesComponent'
 class AdminScreen extends Component {
   render() {
       return (
-        <RecipesComponent/>
+        <RecipesComponent permission="admin"/>
       );
   }
 }

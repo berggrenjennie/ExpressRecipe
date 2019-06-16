@@ -7,14 +7,14 @@ which we use to change the state(showInfo) from true to false when we click the 
 
 // Core functionality from React & Bootstrap
 import React, { Component } from 'react';
-import { Button, Card} from 'react-bootstrap';
+import {Card} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 //CSS imports
 import '../styles/Admin.css';
 
 class CardComponent extends Component {
-  
+
   static propTypes = {
     info: PropTypes.string,   // throws a warning if info is not string
   }
@@ -25,7 +25,7 @@ class CardComponent extends Component {
       showInfo: false,
     }
   }
-  
+
   //change the showInfo state depending on the boolean value.
   toggleInfo = (e) => {
     this.setState({ showInfo: !this.state.showInfo })
