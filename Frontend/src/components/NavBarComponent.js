@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Button, Form } from 'react-bootstrap';
 
+import UserComponent from '../components/UserComponent';
+
 // CSS imports
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/Navbar.css'
@@ -27,6 +29,7 @@ class NavBarComponent extends Component {
     //   userPermission
     // } = this.state
     return (
+      <div>
       <Navbar collapseOnSelect expand="lg">
         <Navbar.Brand>ExpressRecept</Navbar.Brand>
         <Navbar.Toggle className="navbar-togg" aria-controls="basic-navbar-nav" />
@@ -42,33 +45,9 @@ class NavBarComponent extends Component {
             <NavLink to="/superuserpage" style={{textDecoration: 'none'}}>Superuser</NavLink>
             {/*: null}*/}
           </Nav>
-          <Nav>
-            <NavDropdown title="Login" id="collasible-nav-dropdown">
-              <p className="viaOr">Login via</p>
-							<div className="social-buttons">
-								<Button className="btnS btnFb"><i className="fa fa-facebook"></i>  Facebook</Button>
-								<Button className="btnS btnTw"><i className="fa fa-twitter"></i> Twitter</Button>
-							</div>
-              <p className="viaOr or">eller</p>
-							<Form className="form" role="form" method="post" action="login" acceptCharset="UTF-8" id="login-nav">
-								<div className="form-group">
-									<label className="sr-only" htmlFor="exampleInputEmail2">E-post address</label>
-									<input type="email" className="form-control" id="exampleInputEmail2" placeholder="E-post address" required/>
-								</div>
-								<div className="form-group">
-									<label className="sr-only" htmlFor="exampleInputPassword2">Lösenord</label>
-									<input type="password" className="form-control" id="exampleInputPassword2" placeholder="Lösenord" required/>
-                  <p className="forgot">Glömt ditt lösenord?</p>
-								</div>
-                <div className="form-group">
-									<Button type="submit" variant="success">Login</Button>
-								</div>
-							</Form>
-			        <p className="join">Inget konto? Registrera dig här!</p>
-            </NavDropdown>
-          </Nav>
         </Navbar.Collapse>
       </Navbar>
+      </div>
     );
   }
 }

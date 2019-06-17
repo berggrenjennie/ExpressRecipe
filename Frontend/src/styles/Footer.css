@@ -1,25 +1,24 @@
 footer { 
+  display: flex;
+  justify-content: space-between; 
   background: #a4332f;
   padding: 10px;
   text-align: center;
   color:rgb(255, 236, 202);
   font-size: 18px;
   border-top: 7px solid rgb(247, 228, 167);
-  display: flex;
-  justify-content: space-between; 
 }
 footer .social-media h4,
-footer .copy h4,
+.copyright,
 footer .kontakt h4 {
   color: rgb(247, 228, 167);
   margin-bottom: 10px;
   margin-top: 10px;
   font-size: 18px;
 }
-footer .copy h4 {
-  font-family: 'Playfair Display', serif; 
+.footer .copyright {
+  font-family: 'Playfair Display', serif;
   margin-top: 50px;
-  font-weight: bold;
 }
 footer .kontakt p {
   color: rgb(255, 236, 202);
@@ -40,12 +39,14 @@ footer .social-media i:nth-child(-n+2) {
   footer .kontakt h4 {
     font-size: 22px; 
   }
-  footer .copy h4 {
-    font-size: 25px;
+  .copyright {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
   }
   footer .social-media {
     margin-left: 10%; }
   footer .kontakt {
     margin-right: 10%; 
-  } 
+  }
 }

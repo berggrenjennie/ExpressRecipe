@@ -7,7 +7,7 @@ import '../styles/Footer.css'
 class FooterComponent extends Component {
   render() {
     return (
-      <footer>
+      <footer className="footer">
         <div className="social-media">
           <h4>Sociala Medier</h4>
           <div id="sm-tags">
@@ -16,9 +16,7 @@ class FooterComponent extends Component {
             <i className="fa fa-instagram"></i>
           </div>
         </div>
-        <div className="copy">
-          <h4>copyright@2019FEJ</h4>
-        </div>
+        <h4 className="copyright">copyright@2019FEJ</h4>
         <div className="kontakt">
           <h4>Kontakta oss</h4>
           <p>0470-72 33 00</p>

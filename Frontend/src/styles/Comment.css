@@ -1,0 +1,41 @@
+.containerComments {
+    padding: 43px;
+}
+.commentH {
+    font-size: 30px;
+    font-weight: bold;
+    color: #a4332f;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 30px;
+}
+.media-heading {
+    margin-bottom: -2px;
+    font-weight: bold;
+    font-size: 17px;
+    display: inline-block;
+}
+.posted {
+    font-size: 13px;
+    font-style: italic;
+    display: inline-block;
+    color: rgb(189, 188, 188);
+    margin-left: 20px;
+}
+.quote {
+    margin-top: 10px;
+    font-size: 17px;
+    
+}
+.commentH2 {
+    color: #a4332f;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 15px;
+}
+.form-group textarea {
+    font-size: 17px;
+    padding: 20px; 
+    margin-bottom: 15px;
+}
+.submitComment {
+    margin-bottom: 20px;
+}

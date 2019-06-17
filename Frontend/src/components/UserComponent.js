@@ -1,10 +1,10 @@
 import React, { Component,Fragment } from 'react';
-import {Button,Form} from 'react-bootstrap';
-import CardComponent from '../components/CardComponent';
+import {Button, Form} from 'react-bootstrap';
+
 import withStorage from './../HOCS/withStorage';
 import axios from 'axios';
 import PropTypes from "prop-types";
-import '../styles/login.css';
+import '../styles/Login.css';
 
 class UserComponent extends Component {
   static propTypes = {
@@ -29,9 +29,8 @@ class UserComponent extends Component {
       caughtError:false,
       showLoginForm: true,
       showRegisterForm: false,
+    };
   }
-  }
-
 
 /*A method which controls and changes the value of the input field in the form by using setState */
 handleInputChange = name => event => {
@@ -39,6 +38,7 @@ handleInputChange = name => event => {
   state[name] = event.target.value;
   this.setState(state);
 };
+
 
 componentDidMount(){
   axios.get('http://localhost:2000/users/')
@@ -65,12 +65,20 @@ Login = event => {
   }
   this.props.login(user.permission);
   this.props.history.push('/home');
+  console.log("biiis", this.props)
 }
 
   showRegisterForm = (e) => {
     this.setState({
       showLoginForm:false,
       showRegisterForm:true
+    })
+  }
+
+  goBack = (e) => {
+    this.setState({
+      showLoginForm:true,
+      showRegisterForm:false
     })
   }
 
@@ -119,37 +127,44 @@ Login = event => {
           </div>
           <input type="checkbox" className="openSidebarMenu" id="openSidebarMenu"/>
           <label htmlFor="openSidebarMenu" className="sidebarIconToggle">
-            <div className="spinner diagonal part-1"></div>
-            <div className="spinner horizontal"></div>
-            <div className="spinner diagonal part-2"></div>
+            <i className="fa fa-user"></i>
           </label>
+
+
           <div id="sidebarMenu">
             <ul className="sidebarMenuInner">
               <li>
               <Fragment>
-              {showLoginForm?
+              {showLoginForm ? 
               <Form onSubmit={this.Login}>
-                  <h1>Login</h1>
-                  <Form.Control className="inputForm" size="lg" type="Email" placeholder="Email" value={emailLogin}   onChange={this.handleInputChange('emailLogin')} />
+                  <p className="viaOr">Login via</p>
+                  <div className="social-buttons">
+								    <Button className="btnS btnFb"><i className="fa fa-facebook"></i>  Facebook</Button>
+								    <Button className="btnS btnTw"><i className="fa fa-twitter"></i> Twitter</Button>
+							    </div>
+                  <p className="viaOr or">eller</p>
+                  <Form.Control className="inputForm Z" size="lg" type="Email" placeholder="E-post address" value={emailLogin}   onChange={this.handleInputChange('emailLogin')} />
                   <br />
-                  <Form.Control className="inputForm" size="lg" type="password" placeholder="Password" value={passwordLogin}   onChange={this.handleInputChange('passwordLogin')} />
+                  <Form.Control className="inputForm" size="lg" type="password" placeholder="Lösenord" value={passwordLogin}   onChange={this.handleInputChange('passwordLogin')} />
                   <br />
-                  {error ? <p>Email and password don't match Please try agin or register.</p>:null}
-                  <br />
+                  <p className="forgot">Glömt ditt lösenord?</p>
+                  {error ? <p>E-post addressen och lösenordet stämmer inte överens. Försök igen eller registrera dig.</p>:null}
+                  <br /> 
                   {/*We call Login method when we click the submit button in the form .*/}
-                  <Button className="loginUserBtn" variant="success" type="submit">Login</Button><Button className="formBtn" variant="primary" onClick={this.showRegisterForm} >Register</Button>
+                  <Button variant="success" type="submit">Login</Button>
+                  <Button className="btnRegister" variant="info" onClick={this.showRegisterForm} >Register</Button>
                 </Form>
-
                 :null}
-                {showRegisterForm?
+                {showRegisterForm ?
                 <Form onSubmit={this.Register}>
-                    <h1>Register</h1>
-                    <Form.Control className="inputForm" size="lg" type="Email" placeholder="Email" value={email}   onChange={this.handleInputChange('email')} />
+                    <h2 className="registerH">Registrera</h2>
+                    <Form.Control className="inputForm" size="lg" type="Email" placeholder="E-post address" value={email}   onChange={this.handleInputChange('email')} />
                     <br />
-                    <Form.Control className="inputForm" size="lg" type="password" placeholder="Password" value={password}   onChange={this.handleInputChange('password')} />
+                    <Form.Control className="inputForm Y" size="lg" type="password" placeholder="Lösenord" value={password}   onChange={this.handleInputChange('password')} />
                     <br />
                     {/*We call Login method when we click the submit button in the form .*/}
                     <Button className="formBtn" variant="success" type="submit">Register</Button>
+                    <Button className="tillbaka" variant="danger" onClick={this.goBack}>Tillbaka</Button>
                   </Form>
                   :null}
                 </Fragment>

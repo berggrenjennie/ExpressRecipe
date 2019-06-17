@@ -12,6 +12,7 @@
   width: 80%;
   background-color:white;    
   color: rgb(66, 66, 66);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .link {
   color: rgb(66, 66, 66);
@@ -31,23 +32,25 @@ span {
 .recipeName {
   font-size: 20px;
   font-weight: bold;
+  margin-top: 5px;
 }
 .recipeNr {
   font-size: 15px;
   font-style: italic;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 .hr {
-  width: 97%;
+  width: 96.5%;
   margin-top: -2px;
 }
 @media (min-width: 48em) {
   .main {
+    margin: 0 auto; 
+    padding-left: 30px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     max-width: 1200px;
-    margin: auto; 
   }
   .recipeList {
     margin-left: 10px;

@@ -1,6 +1,6 @@
 //core functionality from react
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 //existing component imports
 import NavBarComponent from './components/NavBarComponent';
@@ -14,10 +14,8 @@ import RecipeListScreen from './screens/RecipeListScreen';
 import CategoryScreen from './screens/CategoryScreen';
 import SuperUserScreen from './screens/SuperUserScreen';
 
-
 //CSS imports
 import './App.css';
-
 
 class App extends Component {
 

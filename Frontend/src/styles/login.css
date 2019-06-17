@@ -1,8 +1,12 @@
-body {
-    background: #fff;
-    padding: 0;
-    margin: 0;
-    font-family: 'Varela Round', sans-serif;
+.fa-user {
+    color: rgb(255, 236, 202);
+    font-size: 30px;
+    margin-top: 40px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.fa-user:hover {
+    color: #A4332F;
 }
 .header {
     display: block;
@@ -16,11 +20,86 @@ body {
     overflow: hidden;
     z-index: 10;
 }
+.sidebarMenuInner{
+    margin:0;
+    padding:0;
+}
+.viaOr {
+    margin-top: -18px;
+    font-size: 14px;
+}
+.social-buttons .fa-facebook,
+.social-buttons .fa-twitter, {
+    font-size: 14px;
+}
 
+.btnS {
+    border: none;
+    font-size: 14px;
+    border: none;
+    margin-bottom: 5px;
+}
+.btnFb {
+    background-color:#3b5998;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.btnFb:hover{
+    color: #fff;
+    background-color:#496ebc; 
+}
+.btnTw {
+    cursor: pointer;
+    background-color:#55acee;
+}
+.btnTw:hover{
+    color: #fff;
+    background-color:#59b5fa;
+}
+.forgot {
+    margin-top: -5px;
+    margin-bottom: -5px;
+    color: #A4332F;
+    font-size: 14px;
+}
+.join {
+    font-size: 14px;
+    text-align: center;
+    border-bottom: 1px solid #A4332F;
+    cursor: pointer;
+}
+.or {
+    margin-bottom: 5px;
+    margin-top: 2px;
+}
+.inputForm {
+    padding:12px;
+    font-size: 14px;
+}
+.Z {
+    margin-bottom: -5px;
+}
+form .btn-success {
+    line-height: 8px;
+    font-size: 15px;
+    width: 100%;
+    margin-bottom: 5px;
+    font-style: normal;
+}
+form .btnRegister {
+    line-height: 8px;
+    font-size: 15px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+}
 #sidebarMenu {
-    height: 50%;
-    position: fixed;
+    font-family: 'Playfair Display', serif; 
+    height: 53%;
     right:0;
+    top: 3;
+    position: absolute;
     width: 300px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -28,20 +107,13 @@ body {
     transform: translateX(300px);
     transition: transform 250ms ease-in-out;
     background-color: white;
-    border:1px solid #bf443d;
-  /*  background-image: linear-gradient(to bottom, #bf443d, #ca6949, #d4895d, #dda878, #e7c698, #e7c698, #e7c698, #e7c698, #dda878,
-  #d4895d, #ca6949, #bf443d);*/
-}
-.sidebarMenuInner{
-    margin:0;
-    padding:0;
-    border-top: 1px solid rgba(255, 255, 255, 0.10);
+    border: 1px solid #c9c9c9;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 10px;
+    font-style: normal;
 }
 .sidebarMenuInner li{
     list-style: none;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
     padding: 20px;
     cursor: pointer;
     border-bottom: 1px solid rgba(255, 255, 255, 0.10);
@@ -52,10 +124,7 @@ body {
     color: rgba(255, 255, 255, 0.50);
 }
 .sidebarMenuInner li a{
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
+   cursor: pointer;
     text-decoration: none;
 }
 input[type="checkbox"]:checked ~ #sidebarMenu {
@@ -80,34 +149,7 @@ input[type=checkbox] {
     height: 22px;
     width: 22px;
 }
-.spinner {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    position: absolute;
-    height: 3px;
-    width: 100%;
-    background-color: #fff;
-}
-.horizontal {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    position: relative;
-    float: left;
-    margin-top: 3px;
-}
-.diagonal.part-1 {
-    position: relative;
-    transition: all 0.3s;
-    box-sizing: border-box;
-    float: left;
-}
-.diagonal.part-2 {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    position: relative;
-    float: left;
-    margin-top: 3px;
-}
+
 input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
     transition: all 0.3s;
     box-sizing: border-box;
@@ -125,10 +167,59 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
     transform: rotate(-135deg);
     margin-top: -9px;
 }
-
 .formBtn{
   width: 100px;
 }
 .loginUserBtn{
   width: 100px;
+}
+.registerH {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-align: center;
+   }
+   .registerH:before,
+   .registerH:after {
+    background-color:#A4332F;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+   }
+   .registerH:before {
+    right: 0.5em;
+    margin-left: -50%;
+   }
+   .registerH:after {
+    left: 0.5em;
+    margin-right: -50%;
+   }
+   .Y {
+       margin-top: -5px;
+       margin-bottom: -5px;
+   }
+   .tillbaka {
+       background-color: #A4332F;
+       line-height: 8px;
+       font-size: 15px;
+       width: 100%;
+       padding: 10px;
+       border-radius: 10px;
+       font-weight: bold;
+   }
+   .redHR {
+    background-color: #A4332F;
+   }
+
+@media (min-width: 48em) {
+.fa-user {
+    margin-right: 40px;
+    float: right;
+}
+#sidebarMenu {
+    height: 50%;
+}
 }
