@@ -1,5 +1,6 @@
 // Core functionality from React & Bootstrap
 import React, {Component,Fragment} from 'react';
+import { Markup } from 'interweave';
 
 // CSS imports
 import '../styles/Recipe.css';
@@ -20,12 +21,13 @@ class RecipeCardComponent extends Component {
     return (
       <Fragment>
       <div className="grid-container">
-        <div className="imgCardList"><img src={recipe.imagePath} alt=""/> alt=""/></div>
+        <div className="imgCardList">
+        <Markup content={recipe.videoPath} />
+        </div>
         <div className="titleCardList">{recipe.name}</div>
         <div className="bodyCardList">
           {recipe.preamble}
-          <br/>
-          <br/>
+          <hr/>
           <Link to={"/dashboard/"+recipe._id} className="readMore"  style={{textDecoration: 'none'}}>
             Läsa mer ...
           </Link>

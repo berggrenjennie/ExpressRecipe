@@ -1,10 +1,11 @@
-// Core functionality from React & Bootstrap
+//core functionality from React & Bootstrap
 import React, {Component} from 'react';
 
-// CSS imports
+//CSS imports
 import '../styles/Footer.css'
 
 class FooterComponent extends Component {
+  
   render() {
     return (
       <footer className="footer">

@@ -40,9 +40,7 @@ componentDidMount(){
       <Fragment>
         <SearchComponent/>
         <div>
-        <h1 className="">Kategori Namn : {this.props.match.params.category}</h1>
-        <hr/>
-        <br/>
+        <h1 className="kategoriNamn">Kategori Namn: {this.props.match.params.category}</h1>
         { recipeList.map((recipe) => {
               return (
                 <div className="recipeListCard">

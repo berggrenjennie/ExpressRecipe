@@ -7,19 +7,18 @@
   margin-bottom: 4em;
   margin-left: auto;
   margin-right: auto;
-  height: 85%;
-  max-width: 550px;
+  height: 88%;
+  max-width: 330px;
   width: 80%;
   background-color:white;    
   color: rgb(66, 66, 66);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+} 
 .link {
   color: rgb(66, 66, 66);
 }
 .recipeList img {
   width: 100%;
-  height: auto; 
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
@@ -42,6 +41,7 @@ span {
 .hr {
   width: 96.5%;
   margin-top: -2px;
+  margin-bottom: -10px;
 }
 @media (min-width: 48em) {
   .main {
@@ -56,5 +56,7 @@ span {
     margin-left: 10px;
     margin-right: 10px;
     width: 80%;
+    max-width: 550px;
+    background-color:white; 
   }
 }

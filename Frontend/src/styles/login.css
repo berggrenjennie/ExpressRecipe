@@ -33,26 +33,26 @@
     font-size: 14px;
 }
 
-.btnS {
+.social-buttons .btnS {
     border: none;
     font-size: 14px;
     border: none;
     margin-bottom: 5px;
 }
-.btnFb {
+.social-buttons .btnFb {
     background-color:#3b5998;
     margin-right: 5px;
     cursor: pointer;
 }
-.btnFb:hover{
+.social-buttons .btnFb:hover{
     color: #fff;
     background-color:#496ebc; 
 }
-.btnTw {
+.social-buttons .btnTw {
     cursor: pointer;
-    background-color:#55acee;
+    background-color:#7ec1f5;
 }
-.btnTw:hover{
+.social-buttons .btnTw:hover{
     color: #fff;
     background-color:#59b5fa;
 }

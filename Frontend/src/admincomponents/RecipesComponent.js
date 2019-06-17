@@ -175,44 +175,44 @@ class RecipesComponent extends Component {
                     <option>Dryck</option>
                   </Form.Control>
                   <br />
-                  <Form.Label><span className="star">*</span>Recipe Name :</Form.Label>
+                  <Form.Label><span className="star">*</span>Namn :</Form.Label>
                   <Form.Control className="inputForm" size="lg" type="text"
                     value={name}  onChange={this.handleInputChange('name')} />
                   <br />
-                  <Form.Label><span className="star">*</span>Preamble :</Form.Label>
+                  <Form.Label><span className="star">*</span>Ingress :</Form.Label>
                   <Form.Control as="textarea" rows="5" className="inputForm" size="lg" type="text"
                     value={preamble}  onChange={this.handleInputChange('preamble')} />
                   <br />
-                  <Form.Label><span className="star">*</span>Ingredients :</Form.Label>
+                  <Form.Label><span className="star">*</span>Ingredienser :</Form.Label>
                   <Form.Control as="textarea" rows="5" className="inputForm" size="lg" type="text"
                     value={ingredients}  onChange={this.handleInputChange('ingredients')} />
                   <br />
-                  <Form.Label><span className="star">*</span>Preparation :</Form.Label>
+                  <Form.Label><span className="star">*</span>Förberedelse :</Form.Label>
                   <Form.Control as="textarea" rows="10" className="inputForm" size="lg" type="text"
                     value={preparation}  onChange={this.handleInputChange('preparation')} />
                   <br />
-                  <Form.Label><span className="star">*</span>Image's name :</Form.Label>
+                  <Form.Label><span className="star">*</span>Bild large :</Form.Label>
                   <Form.Control className="inputForm" size="lg" type="text"
                     value={imagePath}  onChange={this.handleInputChange('imagePath')} />
                   <br />
-                  <Form.Label><span className="star">*</span>Vido link :</Form.Label>
+                  <Form.Label><span className="star">*</span>Bild small :</Form.Label>
                   <Form.Control className="inputForm" size="lg" type="text"
                     value={videoPath}  onChange={this.handleInputChange('videoPath')} />
                   <br />
-                  <Form.Label><span className="star">*</span>The number of portions :</Form.Label>
+                  <Form.Label><span className="star">*</span>Portioner :</Form.Label>
                   <Form.Control className="inputForm" size="lg" type="Number"
                     value={portions}  onChange={this.handleInputChange('portions')} />
                   <br />
-                  <Form.Label><span className="star">*</span>Preparation's time :</Form.Label>
+                  <Form.Label><span className="star">*</span>Förberedelse tid :</Form.Label>
                   <Form.Control className="inputForm" size="lg" type="text"
                     value={preparationTime}  onChange={this.handleInputChange('preparationTime')} />
                   <br />
-                  <Form.Label><span className="star">*</span>Diet :</Form.Label>
-                  <Form.Control className="inputForm" size="lg" type="text"
+                  <Form.Label><span className="star">*</span>Allergi information :</Form.Label>
+                  <Form.Control as="textarea" rows="5" className="inputForm" size="lg" type="text"
                     value={diet}  onChange={this.handleInputChange('diet')} />
                   <br />
                   {/*We call addrecipeName method when we click the submit button in the form .*/}
-                  <Button variant="success" type="submit">Add recipe to database</Button>
+                  <Button variant="success" type="submit">Lägg till recept i databasen</Button>
                 </Form>
 
                 <br />

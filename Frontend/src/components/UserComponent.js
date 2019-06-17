@@ -29,7 +29,8 @@ class UserComponent extends Component {
       caughtError:false,
       showLoginForm: true,
       showRegisterForm: false,
-    };
+      showSidebar: true
+    }
   }
 
 /*A method which controls and changes the value of the input field in the form by using setState */
@@ -47,12 +48,7 @@ componentDidMount(){
 }
 
 /*A method which sets the value of the input field in localStorage, and navigates to the dashboard using History.*/
-Login = event => {
-  event.preventDefault();
-  this.setState({
-    showLoginForm:true,
-    showRegisterForm:false
-  })
+Login = (e) => {
   const user = this.state.userData.reduce((prev, user) => {
     return user.email === this.state.emailLogin &&
       user.password === this.state.passwordLogin
@@ -63,22 +59,17 @@ Login = event => {
     this.setState({ error: true });
     return;
   }
-  this.props.login(user.permission);
+  this.props.login(user._id);
   this.props.history.push('/home');
-  console.log("biiis", this.props)
+  this.setState({
+    showSidebar:false
+  });
 }
 
   showRegisterForm = (e) => {
     this.setState({
       showLoginForm:false,
       showRegisterForm:true
-    })
-  }
-
-  goBack = (e) => {
-    this.setState({
-      showLoginForm:true,
-      showRegisterForm:false
     })
   }
 
@@ -101,8 +92,12 @@ Login = event => {
     axios
       .post('http://localhost:2000/users/', newUser, axiosConfig)
       .then(response => {
-        this.props.addUser(response.data._id);
+        const userId=response.data._id;
+        this.props.login(userId);
         this.props.history.push('/home');
+        this.setState({
+          showSidebar:false
+        });
       }).catch(error => {
         if (error.response.data.code === 11000) {
           this.setState({ caughtError: true });
@@ -119,6 +114,7 @@ Login = event => {
       error,
       showLoginForm,
       showRegisterForm,
+      showSidebar
     }= this.state;
 
       return (
@@ -129,8 +125,7 @@ Login = event => {
           <label htmlFor="openSidebarMenu" className="sidebarIconToggle">
             <i className="fa fa-user"></i>
           </label>
-
-
+          {showSidebar ?
           <div id="sidebarMenu">
             <ul className="sidebarMenuInner">
               <li>
@@ -171,9 +166,9 @@ Login = event => {
               </li>
             </ul>
           </div>
+          :null}
         </Fragment>
       );
   }
 }
-
 export default withStorage(UserComponent);
