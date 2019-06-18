@@ -9,6 +9,7 @@ the recipes in database.
 import React, { Component , Fragment} from 'react';
 import CardComponent from '../admincomponents/CardComponent';
 import {Container,Row,Col,Button,Form,Table} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 /* withHTTPRequests is a Higher-order component which takes DashBoardComponent and returns a
 new component*/
@@ -124,9 +125,9 @@ class RecipesComponent extends Component {
 
     return (
       <Fragment>
-        <Container className="table">
+        <Container >
           <Row>
-            <Col  lg="6">
+            <Col  lg="6" >
               <div >
                 <h1 className="recTable">Recept Tabell</h1>
                 <br/>
@@ -148,7 +149,7 @@ class RecipesComponent extends Component {
                     {this.props.recipeList.map((recipe, index) =>
                       <tr key={recipe._id} >
                         <td>{index+1}</td>
-                        <td>{recipe.name}</td>
+                        <td><Link to={"/editrecipe/"+recipe._id}>{recipe.name}</Link></td>
                         <td>{recipe.category}</td>
                         <td>{recipe.preamble}</td>
                         {this.props.permission==="admin"?
@@ -164,6 +165,7 @@ class RecipesComponent extends Component {
           <Col  lg="6">
             <div >
               <CardComponent >
+              <h1>Lägga till ett nytt recept.</h1>
                 <Form onSubmit={this.addRecipe}>
                   <Form.Control as="select" className="inputForm" size="lg" value={category}  onChange={this.handleInputChange('category')} >
                     <option>välj kategori</option>
@@ -175,44 +177,44 @@ class RecipesComponent extends Component {
                     <option>Dryck</option>
                   </Form.Control>
                   <br />
-                  <Form.Label><span className="star">*</span>Namn :</Form.Label>
+                  <Form.Label><span className="star">*</span>Recipe Name :</Form.Label>
                   <Form.Control className="inputForm" size="lg" type="text"
                     value={name}  onChange={this.handleInputChange('name')} />
                   <br />
-                  <Form.Label><span className="star">*</span>Ingress :</Form.Label>
+                  <Form.Label><span className="star">*</span>Preamble :</Form.Label>
                   <Form.Control as="textarea" rows="5" className="inputForm" size="lg" type="text"
                     value={preamble}  onChange={this.handleInputChange('preamble')} />
                   <br />
-                  <Form.Label><span className="star">*</span>Ingredienser :</Form.Label>
+                  <Form.Label><span className="star">*</span>Ingredients :</Form.Label>
                   <Form.Control as="textarea" rows="5" className="inputForm" size="lg" type="text"
                     value={ingredients}  onChange={this.handleInputChange('ingredients')} />
                   <br />
-                  <Form.Label><span className="star">*</span>Förberedelse :</Form.Label>
+                  <Form.Label><span className="star">*</span>Preparation :</Form.Label>
                   <Form.Control as="textarea" rows="10" className="inputForm" size="lg" type="text"
                     value={preparation}  onChange={this.handleInputChange('preparation')} />
                   <br />
-                  <Form.Label><span className="star">*</span>Bild large :</Form.Label>
+                  <Form.Label><span className="star">*</span>Image's name :</Form.Label>
                   <Form.Control className="inputForm" size="lg" type="text"
                     value={imagePath}  onChange={this.handleInputChange('imagePath')} />
                   <br />
-                  <Form.Label><span className="star">*</span>Bild small :</Form.Label>
+                  <Form.Label><span className="star">*</span>Vido link :</Form.Label>
                   <Form.Control className="inputForm" size="lg" type="text"
                     value={videoPath}  onChange={this.handleInputChange('videoPath')} />
                   <br />
-                  <Form.Label><span className="star">*</span>Portioner :</Form.Label>
+                  <Form.Label><span className="star">*</span>The number of portions :</Form.Label>
                   <Form.Control className="inputForm" size="lg" type="Number"
                     value={portions}  onChange={this.handleInputChange('portions')} />
                   <br />
-                  <Form.Label><span className="star">*</span>Förberedelse tid :</Form.Label>
+                  <Form.Label><span className="star">*</span>Preparation's time :</Form.Label>
                   <Form.Control className="inputForm" size="lg" type="text"
                     value={preparationTime}  onChange={this.handleInputChange('preparationTime')} />
                   <br />
-                  <Form.Label><span className="star">*</span>Allergi information :</Form.Label>
+                  <Form.Label><span className="star">*</span>Allergiinformation :</Form.Label>
                   <Form.Control as="textarea" rows="5" className="inputForm" size="lg" type="text"
                     value={diet}  onChange={this.handleInputChange('diet')} />
                   <br />
                   {/*We call addrecipeName method when we click the submit button in the form .*/}
-                  <Button variant="success" type="submit">Lägg till recept i databasen</Button>
+                  <Button variant="success" type="submit">Add recipe to database</Button>
                 </Form>
 
                 <br />

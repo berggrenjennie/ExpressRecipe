@@ -1,3 +1,7 @@
+.aller {
+    margin-left: 80px; 
+    font-family: 'Playfair Display', serif;
+}
 .flexcontainer {
     margin-left: 8em;
     margin-right: 8em;
@@ -68,21 +72,21 @@ h1dolike {
     font-size: 15px;
 }
 .receptfor {
-    font-size: 16px;    
+    font-size: 16px;
     margin-top: 20px;
     margin-bottom: 20px;
     color: #a4332f;
 }
 @media (min-width: 48em) {
     .aller {
-        margin-left: 80px; 
+        margin-left: 80px;
         font-family: 'Playfair Display', serif;
     }
     .aller {
         font-size: 15px;
     }
     .to-do {
-      grid-template-columns: 40% 5% 50% 5%; 
+      grid-template-columns: 40% 5% 50% 5%;
       margin-bottom: 10px;
     }
     .do-like {
@@ -100,7 +104,7 @@ h1dolike {
         border-radius: 2px;
         font-family: "Merriweather", serif;
         color: #555050;
-        font-size: 20px; 
+        font-size: 20px;
     }
     .spara {
     width: 15%;
@@ -128,12 +132,12 @@ h1dolike {
 }
 @media (max-width: 45em) {
     .to-do {
-      grid-template-columns: 1fr; 
-    } 
+      grid-template-columns: 1fr;
+    }
     .do-like {
-      grid-column: auto; 
+      grid-column: auto;
       color: #555050;
-    } 
+    }
     .h1dolike {
         margin-top: 40px;
     }
@@ -151,11 +155,11 @@ h1dolike {
         border-radius: 2px;
         font-family: "Merriweather", serif;
         color: #555050;
-        font-size: 20px; 
+        font-size: 20px;
     }
     .receptfor .opt {
         font-family: "Merriweather", serif;
-        font-size: 20px; 
+        font-size: 20px;
     }
     .do-like {
         font-size: 17px;

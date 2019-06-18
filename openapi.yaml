@@ -1,177 +1,497 @@
 openapi: "3.0.0"
 info:
-  version: 1.0.0
-  title: ExpressRecipe
-  description: |
-    ExpressRecipe consist of 3 models including: User, Recipe and Comment.The user and comment model have the following methods: get all users/comments, get user/comment by id, add new user/comment, update user/comment and delete user/comment. The recipe model has the same methods, except it has an additional get by category method.
+ version: 1.0.0
+ title: ExpressRecipe
+ description: |
+  ExpressRecipe consist of 3 models including: User, Recipe and Comment.The user and comment model have the following methods: get all users/comments, get user/comment by id, add new user/comment, update user/comment and delete user/comment. The recipe model has the same methods, except it has an additional get by category method.
 servers:
 - url: http://localhost:2000
 paths:
-  /users:
-    get:
-      summary: gets all users
-      operationId: getUser
-      tags:
-        - users
-      responses:
-        '200':
-          description: an array of users
-          content:
-            application/json:    
-              schema:
-                $ref: "#/components/schemas/ResponseUsers"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-    post:
-      summary: adds a new User
-      operationId: postUser
-      tags:
-      - users
-      requestBody:
-        description: the user to create
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
-      responses:
-        '201':
-          description: the created user
-          content:
-            application/json:    
-              schema:
-                $ref: "#/components/schemas/ResponseUser"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-  /users/{userId}:
-    get:
-      summary: gets a user by id
-      operationId: getUserById
-      tags:
-      - users
-      parameters:
-      - name: userId
-        in: path
-        description: the user by id
-        required: true
-        schema:
-          type: integer
-          format: int32
-      responses:
-        '200':
-          description: the user
-          content:
-            application/json:    
-              schema:
-                $ref: "#/components/schemas/ResponseUser"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-    put:
-      summary: updates a user
-      operationId: putUser
-      tags:
-      - users
-      parameters:
-      - name: userId
-        in: path
-        description: the user id
-        required: true
-        schema:
-          type: integer
-          format: int32
-      requestBody:
-        description: the user to be updated
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
-      responses:
-        '200':
-          description: the replaced user
-          content:
-            application/json:    
-              schema:
-                $ref: "#/components/schemas/ResponseUser"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-    delete:
-      summary: deletes a user
-      operationId: deleteUser
-      tags:
-        - users
-      parameters:
-      - name: userId
-        in: path
-        description: user id
-        required: true
-        schema:
-          type: integer
-          format: int32
-      responses:
-        '200':
-          description: the deleted user
-          content:
-            application/json:    
-              schema:
-                $ref: "#/components/schemas/ResponseUser"
-        '204':
-          description: No change (nothing was deleted)
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-components:
-  schemas:
-    User:
-      type: object
-      required:
-      - email
-      - password
-      - permission
-      properties:
-        email:
-          type: string
-        password: 
-          type: string
-        permission:
-          type: string
-    ResponseUser:
-      allOf:
-      - $ref: "#/components/schemas/User"
-      - properties:
-          _id:
-            type: string
-            format: uuid
-    ResponseUsers:
-      type: array
-      items:
+ /users:
+  get:
+   summary: gets all users
+   operationId: getUser
+   tags:
+    - users
+   responses:
+    '200':
+     description: an array of users
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/ResponseUsers"
+    default:
+     description: unexpected error
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/Error"
+  post:
+   summary: adds a new User
+   operationId: postUser
+   tags:
+   - users
+   requestBody:
+    description: the user to create
+    required: true
+    content:
+     application/json:
+      schema:
+       $ref: '#/components/schemas/User'
+   responses:
+    '201':
+     description: the created user
+     content:
+      application/json:
+       schema:
         $ref: "#/components/schemas/ResponseUser"
-    Error:
-      required:
-        - code
-        - message
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
+    default:
+     description: unexpected error
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/Error"
+ /users/{userId}:
+  get:
+   summary: gets a user by id
+   operationId: getUserById
+   tags:
+   - users
+   parameters:
+   - name: userId
+    in: path
+    description: the user by id
+    required: true
+    schema:
+     type: string
+   responses:
+    '200':
+     description: the user
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/ResponseUser"
+    default:
+     description: unexpected error
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/Error"
+  put:
+   summary: updates a user
+   operationId: putUser
+   tags:
+   - users
+   parameters:
+   - name: userId
+    in: path
+    description: the user id
+    required: true
+    schema:
+     type: string
+   requestBody:
+    description: the user to be updated
+    required: true
+    content:
+     application/json:
+      schema:
+       $ref: '#/components/schemas/User'
+   responses:
+    '200':
+     description: the replaced user
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/ResponseUser"
+    default:
+     description: unexpected error
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/Error"
+  delete:
+   summary: deletes a user
+   operationId: deleteUser
+   tags:
+    - users
+   parameters:
+   - name: userId
+    in: path
+    description: user id
+    required: true
+    schema:
+     type: string
+   responses:
+    '200':
+     description: the deleted user
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/ResponseUser"
+    '204':
+     description: No change (nothing was deleted)
+    default:
+     description: unexpected error
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/Error"
+
+ /comments:
+  get:
+   summary: gets all comments
+   operationId: getComment
+   tags:
+    - comments
+   responses:
+    '200':
+     description: an array of comments
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/ResponseComments"
+    default:
+     description: unexpected error
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/Error"
+  post:
+   summary: adds a new Comment
+   operationId: postComment
+   tags:
+   - comments
+   requestBody:
+    description: the comment to create
+    required: true
+    content:
+     application/json:
+      schema:
+       $ref: '#/components/schemas/Comment'
+   responses:
+    '201':
+     description: the created comment
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/ResponseComment"
+    default:
+     description: unexpected error
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/Error"
+ /comments/{commentId}:
+  get:
+   summary: gets a comment by id
+   operationId: getCommentById
+   tags:
+   - comments
+   parameters:
+   - name: commentId
+    in: path
+    description: the comment by id
+    required: true
+    schema:
+     type: string
+   responses:
+    '200':
+     description: the comment
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/ResponseComment"
+    default:
+     description: unexpected error
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/Error"
+  put:
+   summary: updates a comment
+   operationId: putComment
+   tags:
+   - comments
+   parameters:
+   - name: commentId
+    in: path
+    description: the comment id
+    required: true
+    schema:
+     type: string
+   requestBody:
+    description: the comment to be updated
+    required: true
+    content:
+     application/json:
+      schema:
+       $ref: '#/components/schemas/Comment'
+   responses:
+    '200':
+     description: the replaced comment
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/ResponseComment"
+    default:
+     description: unexpected error
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/Error"
+  delete:
+   summary: deletes a comment
+   operationId: deleteComment
+   tags:
+    - comments
+   parameters:
+   - name: commentId
+    in: path
+    description: comment id
+    required: true
+    schema:
+     type: string
+   responses:
+    '200':
+     description: the deleted comment
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/ResponseComment"
+    '204':
+     description: No change (nothing was deleted)
+    default:
+     description: unexpected error
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/Error"
+ /recipe:
+  get:
+   summary: gets all recipe
+   operationId: getRecipe
+   tags:
+    - recipes
+   responses:
+    '200':
+     description: an array of recipe
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/ResponseRecipes"
+    default:
+     description: unexpected error
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/Error"
+  post:
+   summary: adds a new Recipe
+   operationId: postRecipe
+   tags:
+   - recipes
+   requestBody:
+    description: the recipe to create
+    required: true
+    content:
+     application/json:
+      schema:
+       $ref: '#/components/schemas/Recipe'
+   responses:
+    '201':
+     description: the created recipe
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/ResponseRecipe"
+    default:
+     description: unexpected error
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/Error"
+ /recipe/{recipeId}:
+  get:
+   summary: gets a recipe by id
+   operationId: getRecipeById
+   tags:
+   - recipes
+   parameters:
+   - name: recipeId
+    in: path
+    description: the recipe by id
+    required: true
+    schema:
+     type: string
+   responses:
+    '200':
+     description: the recipe
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/ResponseRecipe"
+    default:
+     description: unexpected error
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/Error"
+  put:
+   summary: updates a recipe
+   operationId: putRecipe
+   tags:
+   - recipes
+   parameters:
+   - name: recipeId
+    in: path
+    description: the recipe id
+    required: true
+    schema:
+     type: string
+   requestBody:
+    description: the recipe to be updated
+    required: true
+    content:
+     application/json:
+      schema:
+       $ref: '#/components/schemas/Recipe'
+   responses:
+    '200':
+     description: the replaced recipe
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/ResponseRecipe"
+    default:
+     description: unexpected error
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/Error"
+  delete:
+   summary: deletes a recipe
+   operationId: deleteRecipe
+   tags:
+    - recipes
+   parameters:
+   - name: recipeId
+    in: path
+    description: recipe id
+    required: true
+    schema:
+     type: string
+   responses:
+    '200':
+     description: the deleted recipe
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/ResponseRecipe"
+    '204':
+     description: No change (nothing was deleted)
+    default:
+     description: unexpected error
+     content:
+      application/json:
+       schema:
+        $ref: "#/components/schemas/Error"
+components:
+ schemas:
+  User:
+   type: object
+   required:
+   - email
+   - password
+   - permission
+   properties:
+    email:
+     type: string
+    password:
+     type: string
+    permission:
+     type: string
+  ResponseUser:
+   allOf:
+   - $ref: "#/components/schemas/User"
+   - properties:
+     _id:
+      type: string
+      format: uuid
+  ResponseUsers:
+   type: array
+   items:
+    $ref: "#/components/schemas/ResponseUser"
+  Comment:
+   type: object
+   required:
+   - userId
+   - recipeId
+   properties:
+    userId:
+     type: string
+    recipeId:
+     type: string
+    comment:
+     type: string
+  ResponseComment:
+   allOf:
+   - $ref: "#/components/schemas/Comment"
+   - properties:
+     _id:
+      type: string
+      format: uuid
+  ResponseComments:
+   type: array
+   items:
+    $ref: "#/components/schemas/ResponseComments"
+  Recipe:
+   type: object
+   required:
+   - category
+   - name
+   - preamble
+   - ingredients
+   - preparation
+   - imagePath
+   properties:
+    category:
+     type: string
+    name:
+     type: string
+    preamble:
+     type: string
+    ingredients:
+     type: string
+    preparation:
+     type: string
+    imagePath:
+     type: string
+    videoPath:
+     type: string
+    portions:
+     type: number
+    preparationTime:
+     type: number
+    diet:
+     type: string
+  ResponseRecipe:
+   allOf:
+   - $ref: "#/components/schemas/Recipe"
+   - properties:
+     _id:
+      type: string
+      format: uuid
+  ResponseRecipes:
+   type: array
+   items:
+    $ref: "#/components/schemas/ResponseRecipes"
+  Error:
+   required:
+    - code
+    - message
+   properties:
+    code:
+     type: integer
+     format: int32
+    message:
+     type: string

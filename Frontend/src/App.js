@@ -7,7 +7,7 @@ import NavBarComponent from './components/NavBarComponent';
 import FooterComponent from './components/FooterComponent';
 import AboutComponent from './components/AboutComponent';
 import UserComponent from './components/UserComponent';
-//import EditRecipeComponent from './admincomponents/EditRecipeComponent';
+import EditRecipeComponent from './admincomponents/EditRecipeComponent';
 
 //existing component imports - screen components
 import DashBoardScreen from './screens/DashBoardScreen';
@@ -31,7 +31,7 @@ class App extends Component {
           <Route path="/home" component={CategoryScreen} />
           <Route path="/about" component={AboutComponent} />
           <Route path="/adminpage" component={AdminScreen} />
-          {/*<Route path="/editrecipe/:id" component={EditRecipeComponent} />*/}
+          <Route path="/editrecipe/:id" component={EditRecipeComponent} />
           <Route path="/superuserpage" component={SuperUserScreen} />
           <Route path="/dashboard/:id" component={DashBoardScreen} />
           <Route path="/recipeList/:category" component={RecipeListScreen} />
